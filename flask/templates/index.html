@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Model - Plant Leaf Recognition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input[type="file"], input[type="submit"] {
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plant Leaf Recognition</h1>
+        <h2>Select Model</h2>
+        <form method="POST" action="/predict" enctype="multipart/form-data">
+            <label for="model_name">Select Model:</label>
+            <select id="model_name" name="model_name">
+                {% for model_name in model_names %}
+                <option value="{{ model_name }}">{{ model_name }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input type="file" name="file" accept=".jpg, .png, .jpeg" required>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - Plant Leaf Recognition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin-top: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plant Leaf Recognition</h1>
+        <h2>Result</h2>
+        <h3>Original Image</h3>
+        <img src="{{ original_image }}" alt="Original Image">
+        {% if autoencoded_image %}
+        <h3>Autoencoded Image</h3>
+        <img src="{{ autoencoded_image }}" alt="Autoencoded Image">
+        {% endif %}
+        {% if denoised_image %}
+        <h3>Denoised Image</h3>
+        <img src="{{ denoised_image }}" alt="Denoised Image">
+        {% endif %}
+        {% if autoencoder_resnet_image %}
+        <h3>Autoencoder + ResNet Image</h3>
+        <img src="{{ autoencoder_resnet_image }}" alt="Autoencoder + ResNet Image">
+        {% endif %}
+    </div>
+</body>
+</html>

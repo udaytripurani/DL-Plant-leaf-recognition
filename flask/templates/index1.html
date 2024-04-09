@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Model</title>
+</head>
+<body>
+    <h1>Select Model</h1>
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+        <label for="model_name">Select Model:</label>
+        <select id="model_name" name="model_name">
+            {% for model_name in model_names %}
+            <option value="{{ model_name }}">{{ model_name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="file" name="file" accept=".jpg, .png, .jpeg" required>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br><br>
+    {% if original_image %}
+    <h2>Original Image</h2>
+    <img src="{{ url_for('display_image', filename=original_image) }}" alt="Original Image" style="max-width: 500px">
+    {% endif %}
+    <br><br>
+    {% if decoded_image %}
+    <h2>Decoded Image</h2>
+    <img src="{{ url_for('display_image', filename=decoded_image) }}" alt="Decoded Image" style="max-width: 500px">
+    {% endif %}
+</body>
+</html>
